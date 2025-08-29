@@ -10,12 +10,16 @@ from queue import Queue, Empty
 from pathlib import Path
 from typing import Generator, Dict, Any, Optional, Callable
 
+import datetime as _dt
+import re as _re
+
+import pandas as _pd
 from dotenv import load_dotenv
 from kiteconnect import KiteConnect
 
 from config import load_config
 from risk_engine import RiskEngine
-from order_manager_old import OrderManager  # <-- old manager
+from order_manager_old import OrderManager  # your existing order manager
 from utils import setup_logger
 
 # Try to import signals module but don't hard-fail if it's missing
@@ -44,7 +48,6 @@ def _crash(msg: str, logger=None):
     tb = traceback.format_exc()
     text = f"\n{banner}\nFATAL: {msg}\n{banner}\n{tb}\n"
     try:
-        # Windows console-friendly
         print(text, file=sys.stderr, flush=True)
     except Exception:
         pass
@@ -57,14 +60,89 @@ def _crash(msg: str, logger=None):
     sys.exit(1)
 
 
+# --- Symbol sanitization & CSV helpers ---
+
+def _sanitize_symbol(sym: str) -> str:
+    """
+    Make symbols safe across sources:
+      - strip '$', spaces
+      - uppercase
+      - drop 'NSE:' prefix etc. (keep the last colon section)
+      - keep only [A-Z0-9 . - &]
+    Do NOT attach/detach exchange suffix here (order/broker layer decides).
+    """
+    s = str(sym or "").strip().upper()
+    s = s.lstrip("$").replace(" ", "")
+    if ":" in s:  # e.g., 'NSE:INFY' -> 'INFY'
+        s = s.split(":")[-1]
+    if not _re.match(r"^[A-Z0-9][A-Z0-9\.\-&]*$", s):
+        s = "".join(ch for ch in s if ch.isalnum() or ch in ".-&")
+    return s
+
+
+def _load_symbols_from_csv(csv_path: str) -> list[str]:
+    """
+    Load symbols from a universe CSV with common column names, sanitize them,
+    remove obvious junk, and de-duplicate.
+    """
+    df = _pd.read_csv(csv_path)
+    for cand in ["SYMBOL", "Symbol", "symbol", "TICKER", "Ticker", "Name"]:
+        if cand in df.columns:
+            col = cand
+            break
+    else:
+        col = df.columns[0]
+
+    syms = (
+        df[col]
+        .astype(str)
+        .map(_sanitize_symbol)
+        .dropna()
+        .tolist()
+    )
+
+    # drop numeric placeholders and indices
+    syms = [s for s in syms if s and not s.isdigit() and s not in {"NIFTY", "NIFTY50", "NIFTY 50", "NIFTY-50", "^NSEI"}]
+
+    # de-duplicate while preserving order
+    seen, out = set(), []
+    for s in syms:
+        if s not in seen:
+            seen.add(s)
+            out.append(s)
+    return out
+
+
+def _map_tokens_from_instruments(instruments_csv: str, symbols: list[str], exchange: str = "NSE") -> list[int]:
+    """
+    Map sanitized symbols -> Zerodha instrument_token using the official instruments dump.
+    Expected columns: instrument_token, tradingsymbol, exchange (case-insensitive).
+    """
+    df = _pd.read_csv(instruments_csv)
+    cols = {c.lower(): c for c in df.columns}
+    ts_col = cols.get("tradingsymbol") or cols.get("symbol") or list(df.columns)[0]
+    ex_col = cols.get("exchange") or "exchange"
+    tok_col = cols.get("instrument_token") or cols.get("instrument token") or "instrument_token"
+
+    df[ts_col] = df[ts_col].astype(str).map(_sanitize_symbol)
+    if ex_col in df.columns:
+        df = df[df[ex_col].astype(str).str.upper() == exchange.upper()]
+
+    mp = dict(zip(df[ts_col], df[tok_col]))
+    tokens = [int(mp[s]) for s in symbols if s in mp]
+    return tokens
+
+
+# --- Signals normalization ---
+
 def _normalise_signal(sig: Any) -> Dict[str, Any]:
     """
-    Convert various signal shapes into:
+    Convert various signal shapes into a standard dict:
       {"symbol": str, "side": "BUY"/"SELL", "qty": int, "type": "MARKET"/"LIMIT", "price": float|None}
     """
     if isinstance(sig, dict):
         out = {}
-        out["symbol"] = sig.get("symbol") or sig.get("tradingsymbol") or sig.get("s")
+        out["symbol"] = _sanitize_symbol(sig.get("symbol") or sig.get("tradingsymbol") or sig.get("s"))
         out["side"] = (sig.get("side") or sig.get("transaction_type") or "BUY").upper()
         out["qty"] = int(sig.get("qty") or sig.get("quantity") or 0)
         otype = (sig.get("type") or sig.get("order_type") or ("LIMIT" if sig.get("limit_price") else "MARKET")).upper()
@@ -77,7 +155,7 @@ def _normalise_signal(sig: Any) -> Dict[str, Any]:
     # object with attributes
     for attr in ("symbol", "side", "quantity", "qty", "limit_price", "price"):
         if hasattr(sig, attr):
-            symbol = getattr(sig, "symbol", None)
+            symbol = _sanitize_symbol(getattr(sig, "symbol", None))
             side = getattr(sig, "side", "BUY")
             qty = getattr(sig, "quantity", None)
             if qty is None:
@@ -99,7 +177,7 @@ def _normalise_signal(sig: Any) -> Dict[str, Any]:
 
     # tuple/list: (symbol, side, qty, price=None, type=None)
     if isinstance(sig, (tuple, list)) and len(sig) >= 3:
-        symbol = sig[0]
+        symbol = _sanitize_symbol(sig[0])
         side = str(sig[1]).upper()
         qty = int(sig[2])
         price = sig[3] if len(sig) >= 4 else None
@@ -115,7 +193,7 @@ def _normalise_signal(sig: Any) -> Dict[str, Any]:
 def _fallback_signal_generator() -> Generator[Dict[str, Any], None, None]:
     """
     Minimal generator so SIM mode can run even if signals.py is missing/broken.
-    Emits a single MARKET buy for DEMO:INFY with qty 1.
+    Emits a single MARKET buy for INFY with qty 1.
     """
     yield {"symbol": "INFY", "side": "BUY", "qty": 1, "type": "MARKET", "price": None}
 
@@ -223,7 +301,6 @@ class SignalPump:
 
 # ---------------- Market-hours helper ----------------
 
-import datetime as _dt
 try:
     from zoneinfo import ZoneInfo as _ZoneInfo  # py3.9+
     _IST = _ZoneInfo("Asia/Kolkata")
@@ -265,9 +342,16 @@ def main():
     mode = _mode(getattr(cfg, "env", None))
     logger.info(f"Starting engine in {mode} mode...")
 
-    # --- Force-disable ticker if requested BEFORE creating OrderManager ---
-    # This prevents downstream modules (e.g., OrderManager) from starting KiteTicker,
-    # which otherwise can crash with "signal only works in main thread".
+    # Log important env snapshot for quick debugging
+    logger.info(
+        "Env snapshot: DISABLE_TICKER=%s, MARKETDATA_SOURCE=%s, OFFLINE_MODE=%s, REGIME_FILTER=%s",
+        os.getenv("DISABLE_TICKER", ""),
+        os.getenv("MARKETDATA_SOURCE", ""),
+        os.getenv("OFFLINE_MODE", ""),
+        os.getenv("REGIME_FILTER", ""),
+    )
+
+    # Force-disable ticker if requested BEFORE creating OrderManager
     if os.getenv("DISABLE_TICKER", "0") == "1":
         try:
             if hasattr(cfg, "marketdata"):
@@ -279,6 +363,18 @@ def main():
             logger.info("Ticker disabled via env; forcing marketdata.source='none'.")
         except Exception:
             logger.exception("Failed to force-disable ticker via cfg override.")
+    else:
+        # Allow MARKETDATA_SOURCE env to override config if present
+        msrc = os.getenv("MARKETDATA_SOURCE")
+        if msrc:
+            try:
+                if not hasattr(cfg, "marketdata"):
+                    class _MD: pass
+                    cfg.marketdata = _MD()
+                cfg.marketdata.source = str(msrc).lower()
+                logger.info("marketdata.source overridden via env to '%s'.", cfg.marketdata.source)
+            except Exception:
+                logger.exception("Failed to apply MARKETDATA_SOURCE env override.")
 
     # Broker credentials
     api_key = os.getenv("KITE_API_KEY") or getattr(getattr(cfg, "broker", object()), "api_key", None)
@@ -314,6 +410,37 @@ def main():
         order_manager = OrderManager(cfg, risk_engine, kite)
     except Exception:
         _crash("Failed to initialise OrderManager(cfg, risk_engine, kite).", logger)
+
+    # --- Auto-subscribe KiteTicker tokens (optional & safe) ---
+    try:
+        if os.getenv("DISABLE_TICKER", "0") != "1":
+            subscribe_flag = os.getenv("TICKER_SUBSCRIBE", "auto").lower()
+            if subscribe_flag not in ("0", "false", "off"):
+                uni_path = os.getenv("NIFTY500_PATH", "NIFTY500.csv")
+                inst_path = os.getenv("KITE_INSTRUMENTS_PATH", "kite_instruments.csv")
+                max_tokens = int(os.getenv("TICKER_MAX_TOKENS", "200"))
+                exchange = os.getenv("KITE_EXCHANGE", "NSE")
+
+                symbols = _load_symbols_from_csv(uni_path)[:max_tokens * 2]  # overfetch to compensate mapping misses
+                tokens = _map_tokens_from_instruments(inst_path, symbols, exchange=exchange)[:max_tokens]
+
+                if tokens:
+                    # Prefer an OrderManager hook if present
+                    if hasattr(order_manager, "subscribe_tokens") and callable(getattr(order_manager, "subscribe_tokens")):
+                        order_manager.subscribe_tokens(tokens)
+                        logger.info("Subscribed %d tokens via OrderManager.", len(tokens))
+                    elif hasattr(order_manager, "ticker") and hasattr(order_manager.ticker, "subscribe"):
+                        try:
+                            order_manager.ticker.subscribe(tokens)
+                            logger.info("Subscribed %d tokens via order_manager.ticker.", len(tokens))
+                        except Exception:
+                            logger.exception("Failed to subscribe tokens via order_manager.ticker.subscribe()")
+                    else:
+                        logger.warning("No subscribe_tokens()/ticker.subscribe() found; cannot subscribe.")
+                else:
+                    logger.warning("No instrument tokens resolved; ticker will remain unsubscribed.")
+    except Exception:
+        logger.exception("Auto-subscribe failed.")
 
     # Graceful shutdown
     shutting_down = {"flag": False}
@@ -362,12 +489,11 @@ def main():
             try:
                 sig = _normalise_signal(raw)
 
-                # --- Optional market-hours gate for LIVE ---
+                # Optional market-hours gate for LIVE
                 if (mode == "LIVE"
                     and os.getenv("MARKET_HOURS_ONLY", "1") == "1"
                     and not _is_market_open()):
                     logger.warning("Market closed; dropping LIVE signal: %s", sig)
-                    # Skip placing orders after hours; avoid Zerodha errors
                     continue
 
                 logger.info(f"Received signal: {sig}")
@@ -390,7 +516,6 @@ if __name__ == "__main__":
     except SystemExit:
         raise  # allow clean exits
     except Exception:
-        # Last-resort crash report if something blew up before logger existed
         print("\n[ENGINE] Unhandled exception at top level:", file=sys.stderr)
         traceback.print_exc()
         _crash("Unhandled exception at top level.", None)

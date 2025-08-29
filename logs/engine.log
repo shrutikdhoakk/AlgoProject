@@ -5927,3 +5927,577 @@ TypeError: 'AppConfig' object is not iterable
 2025-08-25 15:53:58,948 - INFO - Waiting for signals...
 2025-08-25 15:56:04,056 - INFO - Shutdown requested (SIGINT). Stopping services...
 2025-08-25 15:56:07,074 - INFO - Shutdown complete.
+2025-08-25 17:12:02,938 - INFO - Starting engine in LIVE mode...
+2025-08-25 17:12:02,953 - INFO - Ticker disabled via env; forcing marketdata.source='none'.
+2025-08-25 17:12:02,971 - INFO - Signal generator started with cfg.
+2025-08-25 17:12:02,972 - INFO - Waiting for signals...
+2025-08-25 17:45:40,294 - INFO - Shutdown requested (SIGINT). Stopping services...
+2025-08-25 17:45:43,301 - INFO - Shutdown complete.
+2025-08-26 10:22:46,554 - INFO - Starting engine in LIVE mode...
+2025-08-26 10:22:46,562 - INFO - Ticker disabled via env; forcing marketdata.source='none'.
+2025-08-26 10:22:46,578 - INFO - Signal generator started with cfg.
+2025-08-26 10:22:46,578 - INFO - Waiting for signals...
+2025-08-26 15:51:35,547 - INFO - Shutdown requested (SIGINT). Stopping services...
+2025-08-26 15:51:39,227 - INFO - Shutdown complete.
+2025-08-29 10:28:11,732 - INFO - Starting engine in LIVE mode...
+2025-08-29 10:28:11,741 - INFO - Ticker disabled via env; forcing marketdata.source='none'.
+2025-08-29 10:28:11,755 - INFO - Signal generator started with cfg.
+2025-08-29 10:28:11,755 - INFO - Waiting for signals...
+2025-08-29 10:30:00,341 - INFO - Shutdown requested (SIGINT). Stopping services...
+2025-08-29 10:30:03,342 - INFO - Shutdown complete.
+2025-08-29 10:30:07,099 - INFO - Starting engine in LIVE mode...
+2025-08-29 10:30:07,099 - INFO - Ticker disabled via env; forcing marketdata.source='none'.
+2025-08-29 10:30:07,101 - INFO - Signal generator started with cfg.
+2025-08-29 10:30:07,101 - INFO - Waiting for signals...
+2025-08-29 10:48:39,115 - INFO - Shutdown requested (SIGINT). Stopping services...
+2025-08-29 10:48:42,116 - INFO - Shutdown complete.
+2025-08-29 10:49:10,868 - INFO - Starting engine in LIVE mode...
+2025-08-29 10:49:10,868 - INFO - Ticker disabled via env; forcing marketdata.source='none'.
+2025-08-29 10:49:10,870 - INFO - Signal generator started with cfg.
+2025-08-29 10:49:10,870 - INFO - Waiting for signals...
+2025-08-29 11:10:29,033 - INFO - Shutdown requested (SIGINT). Stopping services...
+2025-08-29 11:10:32,038 - INFO - Shutdown complete.
+2025-08-29 11:12:47,802 - INFO - Starting engine in LIVE mode...
+2025-08-29 11:12:47,802 - INFO - Ticker disabled via env; forcing marketdata.source='none'.
+2025-08-29 11:12:47,804 - INFO - Signal generator started with cfg.
+2025-08-29 11:12:47,804 - INFO - Waiting for signals...
+2025-08-29 11:12:48,329 - ERROR - Signal generator error in pump thread: could not convert string to float: '5%'
+Traceback (most recent call last):
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\engine.py", line 190, in _run
+    for item in gen:
+                ^^^
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\signals.py", line 212, in generate_signals
+    PER_TRADE_RISK = float(os.getenv("PER_TRADE_RISK", "1000"))
+ValueError: could not convert string to float: '5%'
+2025-08-29 11:12:49,361 - INFO - Signal generator started with cfg.
+2025-08-29 11:12:49,361 - ERROR - Signal generator error in pump thread: could not convert string to float: '5%'
+Traceback (most recent call last):
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\engine.py", line 190, in _run
+    for item in gen:
+                ^^^
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\signals.py", line 212, in generate_signals
+    PER_TRADE_RISK = float(os.getenv("PER_TRADE_RISK", "1000"))
+ValueError: could not convert string to float: '5%'
+2025-08-29 11:12:50,362 - INFO - Signal generator started with cfg.
+2025-08-29 11:12:50,363 - ERROR - Signal generator error in pump thread: could not convert string to float: '5%'
+Traceback (most recent call last):
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\engine.py", line 190, in _run
+    for item in gen:
+                ^^^
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\signals.py", line 212, in generate_signals
+    PER_TRADE_RISK = float(os.getenv("PER_TRADE_RISK", "1000"))
+ValueError: could not convert string to float: '5%'
+2025-08-29 11:12:51,364 - INFO - Signal generator started with cfg.
+2025-08-29 11:12:51,365 - ERROR - Signal generator error in pump thread: could not convert string to float: '5%'
+Traceback (most recent call last):
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\engine.py", line 190, in _run
+    for item in gen:
+                ^^^
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\signals.py", line 212, in generate_signals
+    PER_TRADE_RISK = float(os.getenv("PER_TRADE_RISK", "1000"))
+ValueError: could not convert string to float: '5%'
+2025-08-29 11:12:52,378 - INFO - Signal generator started with cfg.
+2025-08-29 11:12:52,379 - ERROR - Signal generator error in pump thread: could not convert string to float: '5%'
+Traceback (most recent call last):
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\engine.py", line 190, in _run
+    for item in gen:
+                ^^^
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\signals.py", line 212, in generate_signals
+    PER_TRADE_RISK = float(os.getenv("PER_TRADE_RISK", "1000"))
+ValueError: could not convert string to float: '5%'
+2025-08-29 11:12:53,380 - INFO - Signal generator started with cfg.
+2025-08-29 11:12:53,380 - ERROR - Signal generator error in pump thread: could not convert string to float: '5%'
+Traceback (most recent call last):
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\engine.py", line 190, in _run
+    for item in gen:
+                ^^^
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\signals.py", line 212, in generate_signals
+    PER_TRADE_RISK = float(os.getenv("PER_TRADE_RISK", "1000"))
+ValueError: could not convert string to float: '5%'
+2025-08-29 11:12:54,382 - INFO - Signal generator started with cfg.
+2025-08-29 11:12:54,383 - ERROR - Signal generator error in pump thread: could not convert string to float: '5%'
+Traceback (most recent call last):
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\engine.py", line 190, in _run
+    for item in gen:
+                ^^^
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\signals.py", line 212, in generate_signals
+    PER_TRADE_RISK = float(os.getenv("PER_TRADE_RISK", "1000"))
+ValueError: could not convert string to float: '5%'
+2025-08-29 11:12:55,384 - INFO - Signal generator started with cfg.
+2025-08-29 11:12:55,385 - ERROR - Signal generator error in pump thread: could not convert string to float: '5%'
+Traceback (most recent call last):
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\engine.py", line 190, in _run
+    for item in gen:
+                ^^^
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\signals.py", line 212, in generate_signals
+    PER_TRADE_RISK = float(os.getenv("PER_TRADE_RISK", "1000"))
+ValueError: could not convert string to float: '5%'
+2025-08-29 11:12:56,386 - INFO - Signal generator started with cfg.
+2025-08-29 11:12:56,386 - ERROR - Signal generator error in pump thread: could not convert string to float: '5%'
+Traceback (most recent call last):
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\engine.py", line 190, in _run
+    for item in gen:
+                ^^^
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\signals.py", line 212, in generate_signals
+    PER_TRADE_RISK = float(os.getenv("PER_TRADE_RISK", "1000"))
+ValueError: could not convert string to float: '5%'
+2025-08-29 11:12:57,388 - INFO - Signal generator started with cfg.
+2025-08-29 11:12:57,388 - ERROR - Signal generator error in pump thread: could not convert string to float: '5%'
+Traceback (most recent call last):
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\engine.py", line 190, in _run
+    for item in gen:
+                ^^^
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\signals.py", line 212, in generate_signals
+    PER_TRADE_RISK = float(os.getenv("PER_TRADE_RISK", "1000"))
+ValueError: could not convert string to float: '5%'
+2025-08-29 11:12:58,390 - INFO - Signal generator started with cfg.
+2025-08-29 11:12:58,390 - ERROR - Signal generator error in pump thread: could not convert string to float: '5%'
+Traceback (most recent call last):
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\engine.py", line 190, in _run
+    for item in gen:
+                ^^^
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\signals.py", line 212, in generate_signals
+    PER_TRADE_RISK = float(os.getenv("PER_TRADE_RISK", "1000"))
+ValueError: could not convert string to float: '5%'
+2025-08-29 11:12:59,392 - INFO - Signal generator started with cfg.
+2025-08-29 11:12:59,392 - ERROR - Signal generator error in pump thread: could not convert string to float: '5%'
+Traceback (most recent call last):
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\engine.py", line 190, in _run
+    for item in gen:
+                ^^^
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\signals.py", line 212, in generate_signals
+    PER_TRADE_RISK = float(os.getenv("PER_TRADE_RISK", "1000"))
+ValueError: could not convert string to float: '5%'
+2025-08-29 11:13:00,395 - INFO - Signal generator started with cfg.
+2025-08-29 11:13:00,396 - ERROR - Signal generator error in pump thread: could not convert string to float: '5%'
+Traceback (most recent call last):
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\engine.py", line 190, in _run
+    for item in gen:
+                ^^^
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\signals.py", line 212, in generate_signals
+    PER_TRADE_RISK = float(os.getenv("PER_TRADE_RISK", "1000"))
+ValueError: could not convert string to float: '5%'
+2025-08-29 11:13:01,399 - INFO - Signal generator started with cfg.
+2025-08-29 11:13:01,399 - ERROR - Signal generator error in pump thread: could not convert string to float: '5%'
+Traceback (most recent call last):
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\engine.py", line 190, in _run
+    for item in gen:
+                ^^^
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\signals.py", line 212, in generate_signals
+    PER_TRADE_RISK = float(os.getenv("PER_TRADE_RISK", "1000"))
+ValueError: could not convert string to float: '5%'
+2025-08-29 11:13:02,402 - INFO - Signal generator started with cfg.
+2025-08-29 11:13:02,402 - ERROR - Signal generator error in pump thread: could not convert string to float: '5%'
+Traceback (most recent call last):
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\engine.py", line 190, in _run
+    for item in gen:
+                ^^^
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\signals.py", line 212, in generate_signals
+    PER_TRADE_RISK = float(os.getenv("PER_TRADE_RISK", "1000"))
+ValueError: could not convert string to float: '5%'
+2025-08-29 11:13:03,403 - INFO - Signal generator started with cfg.
+2025-08-29 11:13:03,404 - ERROR - Signal generator error in pump thread: could not convert string to float: '5%'
+Traceback (most recent call last):
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\engine.py", line 190, in _run
+    for item in gen:
+                ^^^
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\signals.py", line 212, in generate_signals
+    PER_TRADE_RISK = float(os.getenv("PER_TRADE_RISK", "1000"))
+ValueError: could not convert string to float: '5%'
+2025-08-29 11:13:04,406 - INFO - Signal generator started with cfg.
+2025-08-29 11:13:04,407 - ERROR - Signal generator error in pump thread: could not convert string to float: '5%'
+Traceback (most recent call last):
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\engine.py", line 190, in _run
+    for item in gen:
+                ^^^
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\signals.py", line 212, in generate_signals
+    PER_TRADE_RISK = float(os.getenv("PER_TRADE_RISK", "1000"))
+ValueError: could not convert string to float: '5%'
+2025-08-29 11:13:05,410 - INFO - Signal generator started with cfg.
+2025-08-29 11:13:05,411 - ERROR - Signal generator error in pump thread: could not convert string to float: '5%'
+Traceback (most recent call last):
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\engine.py", line 190, in _run
+    for item in gen:
+                ^^^
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\signals.py", line 212, in generate_signals
+    PER_TRADE_RISK = float(os.getenv("PER_TRADE_RISK", "1000"))
+ValueError: could not convert string to float: '5%'
+2025-08-29 11:13:06,413 - INFO - Signal generator started with cfg.
+2025-08-29 11:13:06,414 - ERROR - Signal generator error in pump thread: could not convert string to float: '5%'
+Traceback (most recent call last):
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\engine.py", line 190, in _run
+    for item in gen:
+                ^^^
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\signals.py", line 212, in generate_signals
+    PER_TRADE_RISK = float(os.getenv("PER_TRADE_RISK", "1000"))
+ValueError: could not convert string to float: '5%'
+2025-08-29 11:13:07,418 - INFO - Signal generator started with cfg.
+2025-08-29 11:13:07,418 - ERROR - Signal generator error in pump thread: could not convert string to float: '5%'
+Traceback (most recent call last):
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\engine.py", line 190, in _run
+    for item in gen:
+                ^^^
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\signals.py", line 212, in generate_signals
+    PER_TRADE_RISK = float(os.getenv("PER_TRADE_RISK", "1000"))
+ValueError: could not convert string to float: '5%'
+2025-08-29 11:13:08,420 - INFO - Signal generator started with cfg.
+2025-08-29 11:13:08,421 - ERROR - Signal generator error in pump thread: could not convert string to float: '5%'
+Traceback (most recent call last):
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\engine.py", line 190, in _run
+    for item in gen:
+                ^^^
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\signals.py", line 212, in generate_signals
+    PER_TRADE_RISK = float(os.getenv("PER_TRADE_RISK", "1000"))
+ValueError: could not convert string to float: '5%'
+2025-08-29 11:13:09,424 - INFO - Signal generator started with cfg.
+2025-08-29 11:13:09,425 - ERROR - Signal generator error in pump thread: could not convert string to float: '5%'
+Traceback (most recent call last):
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\engine.py", line 190, in _run
+    for item in gen:
+                ^^^
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\signals.py", line 212, in generate_signals
+    PER_TRADE_RISK = float(os.getenv("PER_TRADE_RISK", "1000"))
+ValueError: could not convert string to float: '5%'
+2025-08-29 11:13:10,428 - INFO - Signal generator started with cfg.
+2025-08-29 11:13:10,429 - ERROR - Signal generator error in pump thread: could not convert string to float: '5%'
+Traceback (most recent call last):
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\engine.py", line 190, in _run
+    for item in gen:
+                ^^^
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\signals.py", line 212, in generate_signals
+    PER_TRADE_RISK = float(os.getenv("PER_TRADE_RISK", "1000"))
+ValueError: could not convert string to float: '5%'
+2025-08-29 11:13:11,430 - INFO - Signal generator started with cfg.
+2025-08-29 11:13:11,431 - ERROR - Signal generator error in pump thread: could not convert string to float: '5%'
+Traceback (most recent call last):
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\engine.py", line 190, in _run
+    for item in gen:
+                ^^^
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\signals.py", line 212, in generate_signals
+    PER_TRADE_RISK = float(os.getenv("PER_TRADE_RISK", "1000"))
+ValueError: could not convert string to float: '5%'
+2025-08-29 11:13:12,434 - INFO - Signal generator started with cfg.
+2025-08-29 11:13:12,434 - ERROR - Signal generator error in pump thread: could not convert string to float: '5%'
+Traceback (most recent call last):
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\engine.py", line 190, in _run
+    for item in gen:
+                ^^^
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\signals.py", line 212, in generate_signals
+    PER_TRADE_RISK = float(os.getenv("PER_TRADE_RISK", "1000"))
+ValueError: could not convert string to float: '5%'
+2025-08-29 11:13:13,436 - INFO - Signal generator started with cfg.
+2025-08-29 11:13:13,437 - ERROR - Signal generator error in pump thread: could not convert string to float: '5%'
+Traceback (most recent call last):
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\engine.py", line 190, in _run
+    for item in gen:
+                ^^^
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\signals.py", line 212, in generate_signals
+    PER_TRADE_RISK = float(os.getenv("PER_TRADE_RISK", "1000"))
+ValueError: could not convert string to float: '5%'
+2025-08-29 11:13:14,440 - INFO - Signal generator started with cfg.
+2025-08-29 11:13:14,440 - ERROR - Signal generator error in pump thread: could not convert string to float: '5%'
+Traceback (most recent call last):
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\engine.py", line 190, in _run
+    for item in gen:
+                ^^^
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\signals.py", line 212, in generate_signals
+    PER_TRADE_RISK = float(os.getenv("PER_TRADE_RISK", "1000"))
+ValueError: could not convert string to float: '5%'
+2025-08-29 11:13:15,442 - INFO - Signal generator started with cfg.
+2025-08-29 11:13:15,442 - ERROR - Signal generator error in pump thread: could not convert string to float: '5%'
+Traceback (most recent call last):
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\engine.py", line 190, in _run
+    for item in gen:
+                ^^^
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\signals.py", line 212, in generate_signals
+    PER_TRADE_RISK = float(os.getenv("PER_TRADE_RISK", "1000"))
+ValueError: could not convert string to float: '5%'
+2025-08-29 11:13:16,443 - INFO - Signal generator started with cfg.
+2025-08-29 11:13:16,444 - ERROR - Signal generator error in pump thread: could not convert string to float: '5%'
+Traceback (most recent call last):
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\engine.py", line 190, in _run
+    for item in gen:
+                ^^^
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\signals.py", line 212, in generate_signals
+    PER_TRADE_RISK = float(os.getenv("PER_TRADE_RISK", "1000"))
+ValueError: could not convert string to float: '5%'
+2025-08-29 11:13:17,445 - INFO - Signal generator started with cfg.
+2025-08-29 11:13:17,446 - ERROR - Signal generator error in pump thread: could not convert string to float: '5%'
+Traceback (most recent call last):
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\engine.py", line 190, in _run
+    for item in gen:
+                ^^^
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\signals.py", line 212, in generate_signals
+    PER_TRADE_RISK = float(os.getenv("PER_TRADE_RISK", "1000"))
+ValueError: could not convert string to float: '5%'
+2025-08-29 11:13:18,448 - INFO - Signal generator started with cfg.
+2025-08-29 11:13:18,449 - ERROR - Signal generator error in pump thread: could not convert string to float: '5%'
+Traceback (most recent call last):
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\engine.py", line 190, in _run
+    for item in gen:
+                ^^^
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\signals.py", line 212, in generate_signals
+    PER_TRADE_RISK = float(os.getenv("PER_TRADE_RISK", "1000"))
+ValueError: could not convert string to float: '5%'
+2025-08-29 11:13:19,452 - INFO - Signal generator started with cfg.
+2025-08-29 11:13:19,453 - ERROR - Signal generator error in pump thread: could not convert string to float: '5%'
+Traceback (most recent call last):
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\engine.py", line 190, in _run
+    for item in gen:
+                ^^^
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\signals.py", line 212, in generate_signals
+    PER_TRADE_RISK = float(os.getenv("PER_TRADE_RISK", "1000"))
+ValueError: could not convert string to float: '5%'
+2025-08-29 11:13:20,455 - INFO - Signal generator started with cfg.
+2025-08-29 11:13:20,457 - ERROR - Signal generator error in pump thread: could not convert string to float: '5%'
+Traceback (most recent call last):
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\engine.py", line 190, in _run
+    for item in gen:
+                ^^^
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\signals.py", line 212, in generate_signals
+    PER_TRADE_RISK = float(os.getenv("PER_TRADE_RISK", "1000"))
+ValueError: could not convert string to float: '5%'
+2025-08-29 11:13:21,460 - INFO - Signal generator started with cfg.
+2025-08-29 11:13:21,460 - ERROR - Signal generator error in pump thread: could not convert string to float: '5%'
+Traceback (most recent call last):
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\engine.py", line 190, in _run
+    for item in gen:
+                ^^^
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\signals.py", line 212, in generate_signals
+    PER_TRADE_RISK = float(os.getenv("PER_TRADE_RISK", "1000"))
+ValueError: could not convert string to float: '5%'
+2025-08-29 11:13:22,462 - INFO - Signal generator started with cfg.
+2025-08-29 11:13:22,463 - ERROR - Signal generator error in pump thread: could not convert string to float: '5%'
+Traceback (most recent call last):
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\engine.py", line 190, in _run
+    for item in gen:
+                ^^^
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\signals.py", line 212, in generate_signals
+    PER_TRADE_RISK = float(os.getenv("PER_TRADE_RISK", "1000"))
+ValueError: could not convert string to float: '5%'
+2025-08-29 11:13:23,465 - INFO - Signal generator started with cfg.
+2025-08-29 11:13:23,465 - ERROR - Signal generator error in pump thread: could not convert string to float: '5%'
+Traceback (most recent call last):
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\engine.py", line 190, in _run
+    for item in gen:
+                ^^^
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\signals.py", line 212, in generate_signals
+    PER_TRADE_RISK = float(os.getenv("PER_TRADE_RISK", "1000"))
+ValueError: could not convert string to float: '5%'
+2025-08-29 11:13:24,467 - INFO - Signal generator started with cfg.
+2025-08-29 11:13:24,468 - ERROR - Signal generator error in pump thread: could not convert string to float: '5%'
+Traceback (most recent call last):
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\engine.py", line 190, in _run
+    for item in gen:
+                ^^^
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\signals.py", line 212, in generate_signals
+    PER_TRADE_RISK = float(os.getenv("PER_TRADE_RISK", "1000"))
+ValueError: could not convert string to float: '5%'
+2025-08-29 11:13:25,472 - INFO - Signal generator started with cfg.
+2025-08-29 11:13:25,473 - ERROR - Signal generator error in pump thread: could not convert string to float: '5%'
+Traceback (most recent call last):
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\engine.py", line 190, in _run
+    for item in gen:
+                ^^^
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\signals.py", line 212, in generate_signals
+    PER_TRADE_RISK = float(os.getenv("PER_TRADE_RISK", "1000"))
+ValueError: could not convert string to float: '5%'
+2025-08-29 11:13:26,477 - INFO - Signal generator started with cfg.
+2025-08-29 11:13:26,478 - ERROR - Signal generator error in pump thread: could not convert string to float: '5%'
+Traceback (most recent call last):
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\engine.py", line 190, in _run
+    for item in gen:
+                ^^^
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\signals.py", line 212, in generate_signals
+    PER_TRADE_RISK = float(os.getenv("PER_TRADE_RISK", "1000"))
+ValueError: could not convert string to float: '5%'
+2025-08-29 11:13:27,481 - INFO - Signal generator started with cfg.
+2025-08-29 11:13:27,482 - ERROR - Signal generator error in pump thread: could not convert string to float: '5%'
+Traceback (most recent call last):
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\engine.py", line 190, in _run
+    for item in gen:
+                ^^^
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\signals.py", line 212, in generate_signals
+    PER_TRADE_RISK = float(os.getenv("PER_TRADE_RISK", "1000"))
+ValueError: could not convert string to float: '5%'
+2025-08-29 11:13:28,484 - INFO - Signal generator started with cfg.
+2025-08-29 11:13:28,485 - ERROR - Signal generator error in pump thread: could not convert string to float: '5%'
+Traceback (most recent call last):
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\engine.py", line 190, in _run
+    for item in gen:
+                ^^^
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\signals.py", line 212, in generate_signals
+    PER_TRADE_RISK = float(os.getenv("PER_TRADE_RISK", "1000"))
+ValueError: could not convert string to float: '5%'
+2025-08-29 11:13:29,489 - INFO - Signal generator started with cfg.
+2025-08-29 11:13:29,490 - ERROR - Signal generator error in pump thread: could not convert string to float: '5%'
+Traceback (most recent call last):
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\engine.py", line 190, in _run
+    for item in gen:
+                ^^^
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\signals.py", line 212, in generate_signals
+    PER_TRADE_RISK = float(os.getenv("PER_TRADE_RISK", "1000"))
+ValueError: could not convert string to float: '5%'
+2025-08-29 11:13:30,494 - INFO - Signal generator started with cfg.
+2025-08-29 11:13:30,495 - ERROR - Signal generator error in pump thread: could not convert string to float: '5%'
+Traceback (most recent call last):
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\engine.py", line 190, in _run
+    for item in gen:
+                ^^^
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\signals.py", line 212, in generate_signals
+    PER_TRADE_RISK = float(os.getenv("PER_TRADE_RISK", "1000"))
+ValueError: could not convert string to float: '5%'
+2025-08-29 11:13:31,499 - INFO - Signal generator started with cfg.
+2025-08-29 11:13:31,500 - ERROR - Signal generator error in pump thread: could not convert string to float: '5%'
+Traceback (most recent call last):
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\engine.py", line 190, in _run
+    for item in gen:
+                ^^^
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\signals.py", line 212, in generate_signals
+    PER_TRADE_RISK = float(os.getenv("PER_TRADE_RISK", "1000"))
+ValueError: could not convert string to float: '5%'
+2025-08-29 11:13:32,503 - INFO - Signal generator started with cfg.
+2025-08-29 11:13:32,504 - ERROR - Signal generator error in pump thread: could not convert string to float: '5%'
+Traceback (most recent call last):
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\engine.py", line 190, in _run
+    for item in gen:
+                ^^^
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\signals.py", line 212, in generate_signals
+    PER_TRADE_RISK = float(os.getenv("PER_TRADE_RISK", "1000"))
+ValueError: could not convert string to float: '5%'
+2025-08-29 11:13:32,873 - INFO - Shutdown requested (SIGINT). Stopping services...
+2025-08-29 11:13:33,508 - INFO - Shutdown complete.
+2025-08-29 11:13:36,565 - INFO - Starting engine in LIVE mode...
+2025-08-29 11:13:36,565 - INFO - Ticker disabled via env; forcing marketdata.source='none'.
+2025-08-29 11:13:36,567 - INFO - Signal generator started with cfg.
+2025-08-29 11:13:36,567 - INFO - Waiting for signals...
+2025-08-29 11:13:56,328 - INFO - Shutdown requested (SIGINT). Stopping services...
+2025-08-29 11:13:59,353 - INFO - Shutdown complete.
+2025-08-29 11:14:06,830 - INFO - Starting engine in LIVE mode...
+2025-08-29 11:14:06,830 - INFO - Ticker disabled via env; forcing marketdata.source='none'.
+2025-08-29 11:14:06,832 - INFO - Signal generator started with cfg.
+2025-08-29 11:14:06,832 - INFO - Waiting for signals...
+2025-08-29 11:14:07,334 - INFO - Shutdown requested (SIGINT). Stopping services...
+2025-08-29 11:14:10,341 - INFO - Shutdown complete.
+2025-08-29 11:15:14,175 - INFO - Starting engine in LIVE mode...
+2025-08-29 11:15:14,176 - INFO - Ticker disabled via env; forcing marketdata.source='none'.
+2025-08-29 11:15:14,177 - INFO - Signal generator started with cfg.
+2025-08-29 11:15:14,177 - INFO - Waiting for signals...
+2025-08-29 11:15:32,964 - INFO - Shutdown requested (SIGINT). Stopping services...
+2025-08-29 11:15:35,972 - INFO - Shutdown complete.
+2025-08-29 11:15:40,618 - INFO - Starting engine in LIVE mode...
+2025-08-29 11:15:40,618 - INFO - Ticker disabled via env; forcing marketdata.source='none'.
+2025-08-29 11:15:40,620 - INFO - Signal generator started with cfg.
+2025-08-29 11:15:40,620 - INFO - Waiting for signals...
+2025-08-29 11:17:44,085 - INFO - Shutdown requested (SIGINT). Stopping services...
+2025-08-29 11:17:47,089 - INFO - Shutdown complete.
+2025-08-29 11:18:17,489 - INFO - Starting engine in LIVE mode...
+2025-08-29 11:18:17,490 - INFO - Ticker disabled via env; forcing marketdata.source='none'.
+2025-08-29 11:18:17,491 - INFO - Signal generator started with cfg.
+2025-08-29 11:18:17,491 - INFO - Waiting for signals...
+2025-08-29 11:19:34,283 - INFO - Shutdown requested (SIGINT). Stopping services...
+2025-08-29 11:19:37,293 - INFO - Shutdown complete.
+2025-08-29 11:45:59,128 - INFO - Starting engine in LIVE mode...
+2025-08-29 11:45:59,128 - INFO - Ticker disabled via env; forcing marketdata.source='none'.
+2025-08-29 11:45:59,130 - INFO - Signal generator started with cfg.
+2025-08-29 11:45:59,130 - INFO - Waiting for signals...
+2025-08-29 13:00:43,953 - INFO - Shutdown requested (SIGINT). Stopping services...
+2025-08-29 13:00:46,973 - INFO - Shutdown complete.
+2025-08-29 13:01:07,897 - INFO - Starting engine in LIVE mode...
+2025-08-29 13:01:07,898 - INFO - Env snapshot: DISABLE_TICKER=0, MARKETDATA_SOURCE=yfinance, OFFLINE_MODE=0, REGIME_FILTER=0
+2025-08-29 13:01:07,898 - INFO - marketdata.source overridden via env to 'yfinance'.
+2025-08-29 13:01:07,902 - INFO - Signal generator started with cfg.
+2025-08-29 13:01:07,902 - INFO - Waiting for signals...
+2025-08-29 13:05:13,908 - INFO - Shutdown requested (SIGINT). Stopping services...
+2025-08-29 13:05:16,922 - INFO - Shutdown complete.
+2025-08-29 13:05:42,279 - INFO - Starting engine in LIVE mode...
+2025-08-29 13:05:42,280 - INFO - Env snapshot: DISABLE_TICKER=0, MARKETDATA_SOURCE=yfinance, OFFLINE_MODE=0, REGIME_FILTER=0
+2025-08-29 13:05:42,280 - INFO - marketdata.source overridden via env to 'yfinance'.
+2025-08-29 13:05:42,288 - ERROR - Auto-subscribe failed.
+Traceback (most recent call last):
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\engine.py", line 425, in main
+    tokens = _map_tokens_from_instruments(inst_path, symbols, exchange=exchange)[:max_tokens]
+             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\engine.py", line 121, in _map_tokens_from_instruments
+    df = _pd.read_csv(instruments_csv)
+  File "C:\Users\admin\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\io\parsers\readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "C:\Users\admin\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\io\parsers\readers.py", line 620, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "C:\Users\admin\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\io\parsers\readers.py", line 1620, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\admin\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\io\parsers\readers.py", line 1880, in _make_engine
+    self.handles = get_handle(
+                   ~~~~~~~~~~^
+        f,
+        ^^
+    ...<6 lines>...
+        storage_options=self.options.get("storage_options", None),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\admin\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\io\common.py", line 873, in get_handle
+    handle = open(
+        handle,
+    ...<3 lines>...
+        newline="",
+    )
+FileNotFoundError: [Errno 2] No such file or directory: 'kite_instruments.csv'
+2025-08-29 13:05:42,347 - INFO - Signal generator started with cfg.
+2025-08-29 13:05:42,347 - INFO - Waiting for signals...
+2025-08-29 13:08:16,092 - INFO - Shutdown requested (SIGINT). Stopping services...
+2025-08-29 13:08:19,099 - INFO - Shutdown complete.
+2025-08-29 13:08:35,368 - INFO - Starting engine in LIVE mode...
+2025-08-29 13:08:35,368 - INFO - Env snapshot: DISABLE_TICKER=0, MARKETDATA_SOURCE=yfinance, OFFLINE_MODE=0, REGIME_FILTER=0
+2025-08-29 13:08:35,368 - INFO - marketdata.source overridden via env to 'yfinance'.
+2025-08-29 13:08:35,376 - ERROR - Auto-subscribe failed.
+Traceback (most recent call last):
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\engine.py", line 425, in main
+    tokens = _map_tokens_from_instruments(inst_path, symbols, exchange=exchange)[:max_tokens]
+             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\admin\Downloads\zerodha_trading_engine_modified\engine.py", line 121, in _map_tokens_from_instruments
+    df = _pd.read_csv(instruments_csv)
+  File "C:\Users\admin\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\io\parsers\readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "C:\Users\admin\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\io\parsers\readers.py", line 620, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "C:\Users\admin\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\io\parsers\readers.py", line 1620, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\admin\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\io\parsers\readers.py", line 1880, in _make_engine
+    self.handles = get_handle(
+                   ~~~~~~~~~~^
+        f,
+        ^^
+    ...<6 lines>...
+        storage_options=self.options.get("storage_options", None),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\admin\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\io\common.py", line 873, in get_handle
+    handle = open(
+        handle,
+    ...<3 lines>...
+        newline="",
+    )
+FileNotFoundError: [Errno 2] No such file or directory: 'kite_instruments.csv'
+2025-08-29 13:08:35,380 - INFO - Signal generator started with cfg.
+2025-08-29 13:08:35,380 - INFO - Waiting for signals...
+2025-08-29 13:09:19,053 - INFO - Shutdown requested (SIGINT). Stopping services...
+2025-08-29 13:09:22,054 - INFO - Shutdown complete.
+2025-08-29 13:09:25,304 - INFO - Starting engine in LIVE mode...
+2025-08-29 13:09:25,305 - INFO - Env snapshot: DISABLE_TICKER=0, MARKETDATA_SOURCE=yfinance, OFFLINE_MODE=0, REGIME_FILTER=0
+2025-08-29 13:09:25,305 - INFO - marketdata.source overridden via env to 'yfinance'.
+2025-08-29 13:09:25,308 - INFO - Signal generator started with cfg.
+2025-08-29 13:09:25,308 - INFO - Waiting for signals...
+2025-08-29 13:12:09,220 - INFO - Shutdown requested (SIGINT). Stopping services...
+2025-08-29 13:12:12,235 - INFO - Shutdown complete.
+2025-08-29 13:12:25,130 - INFO - Starting engine in LIVE mode...
+2025-08-29 13:12:25,130 - INFO - Env snapshot: DISABLE_TICKER=0, MARKETDATA_SOURCE=yfinance, OFFLINE_MODE=0, REGIME_FILTER=0
+2025-08-29 13:12:25,130 - INFO - marketdata.source overridden via env to 'yfinance'.
+2025-08-29 13:12:25,416 - INFO - Subscribed 200 tokens via order_manager.ticker.
+2025-08-29 13:12:25,417 - INFO - Signal generator started with cfg.
+2025-08-29 13:12:25,417 - INFO - Waiting for signals...
+2025-08-29 15:41:31,795 - INFO - Shutdown requested (SIGINT). Stopping services...
+2025-08-29 15:41:36,494 - INFO - Shutdown complete.
