@@ -113,3 +113,10 @@ All signals pass through the pre‑trade gate before being executed.
 Trading involves risk of substantial loss.  This project does not take
 responsibility for financial outcomes.  Always back‑test and paper‑trade
 before going live and ensure compliance with SEBI regulations.
+
+git pull https://github.com/shrutikdhoakk/AlgoProject.git
+
+
+git add -A
+git commit -m "your change"
+git push
