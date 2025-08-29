@@ -1,0 +1,21 @@
+﻿# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Secrets
+.env
+
+# Logs
+logs/
+*.log
+
+# Generated / data dumps
+kite_instruments.csv
+backtest/*.csv
+equity_curve.csv
+trades.csv
+
+# OS/IDE
+.DS_Store
+.vscode/
