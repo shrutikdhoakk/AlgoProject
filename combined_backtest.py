@@ -30,10 +30,10 @@ except Exception:  # pragma: no cover
 @dataclass
 class StrategyParameters:
     # Risk / portfolio
-    total_capital: float = 100_000.0
-    max_invested: float = 50_000.0
-    per_trade_risk: float = 2_000.0
-    max_positions: int = 5
+    total_capital: float = 500_000.0
+    max_invested: float = 100_000.0
+    per_trade_risk: float = 20_000.0
+    max_positions: int = 8
     slippage: float = 0.001
     use_gate: bool = True
     use_trend: bool = True
